@@ -1,4 +1,2 @@
-log/development.log
-log/production.log
-log/server.log
-log/test.log
+log
+public/uploads

@@ -1,12 +1,28 @@
-<% form_for @user do |f| %>
+<% form_for @user, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </p>
-  <p>
-    <%= f.label :avatar %><br />
-    <%= f.text_field :avatar %>
-  </p>
+  <fieldset>
+    <legend>Avatar</legend>
+    <p>
+      <%= image_tag(@user.avatar_url(:thumb)) if @user.avatar? %>
+      <% unless @user.new_record? %>
+        <%= f.check_box :remove_avatar %>
+        <%= f.label :remove_avatar, "remove avatar" %>
+      <% end %>
+    </p>
+    <p>
+      <%= f.label :avatar, "Upload local file:" %><br />
+      <%= f.file_field :avatar %>
+      <%= f.hidden_field :avatar_cache %>
+    </p>
+    <p><em>…or…</em></p>
+    <p>
+      <%= f.label :remote_avatar_url, "Download remote file:" %><br />
+      <%= f.text_field :remote_avatar_url %>
+    </p>
+  </fieldset>
   <p><%= f.submit "Submit" %></p>
 <% end %>

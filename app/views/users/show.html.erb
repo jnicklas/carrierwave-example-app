@@ -6,7 +6,7 @@
 </p>
 <p>
   <strong>Avatar:</strong>
-  <%=h @user.avatar %>
+  <%= image_tag(@user.avatar_url(:thumb)) if @user.avatar_url %>
 </p>
 
 <p>
