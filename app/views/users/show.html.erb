@@ -6,7 +6,7 @@
 </p>
 <p>
   <strong>Avatar:</strong>
-  <%= image_tag(@user.avatar_url(:thumb)) if @user.avatar_url %>
+  <%= image_tag(@user.avatar_url(:with_mirror)) if @user.avatar_url %>
 </p>
 
 <p>
